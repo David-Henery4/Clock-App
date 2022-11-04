@@ -1,0 +1,12 @@
+.home{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
+  @include respon (lap){
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}

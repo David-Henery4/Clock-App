@@ -1,0 +1,18 @@
+.main{
+  width: 100%;
+  height: 100%;
+  padding: 3rem 2.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // background-size: cover;
+  @include respon (lrgTab){
+    padding: 4rem 3.6rem
+  }
+  @include respon (desk){
+    padding: 5rem 13rem 7rem;
+  }
+  @include respon (lrgDesk){
+    padding: 5.6rem 16.5rem 9.8rem;
+  }
+}

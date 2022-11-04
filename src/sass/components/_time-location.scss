@@ -1,0 +1,51 @@
+.time-location{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: flex-start;
+  &-msg{
+    display: flex;
+    gap: 17px;
+    &__icon{
+      
+    }
+    &__greeting{
+      &--extra{
+        display: none;
+        @include respon (tab){
+          display: inline;
+        }
+      }
+    }
+  }
+  
+  &-timezone{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 16px;
+  @include respon (mob){
+    flex-direction: row;
+    align-items: baseline;
+  }
+    &__time{
+      
+    }
+    &__zone{
+      
+    }
+  }
+  
+  &__location{
+    
+  }
+  
+  &__btn{
+    &-icon{
+      position: relative;
+      z-index: 1;
+    }
+  }
+}

@@ -1,7 +1,37 @@
 
 @mixin respon ($breakpoint) {
+  @if($breakpoint == lrgDesk) {
+    @media (min-width: 87.5em) // 1400px 
+    { @content }
+  };
+  //
+  @if($breakpoint == desk) {
+    @media (min-width: 75em) // 1200px 
+    { @content }
+  };
+  //
+  @if $breakpoint == lap{
+    @media (min-width: 58.75em)// 940px
+    {@content}
+  };
+  //
+  @if $breakpoint == lrgTab{
+    @media (min-width: 48em)// 768px
+    {@content}
+  };
+  //
   @if $breakpoint == tab{
-    @media (min-width: 48em)// 768px might change
+    @media (min-width: 35.93em)// 575px
+    {@content}
+  };
+  //
+  @if $breakpoint == lrgMob{
+    @media (min-width: 29.68em)// 475px might change
+    {@content}
+  };
+  //
+  @if $breakpoint == mob{
+    @media (min-width: 23.43em)// 375px might change
     {@content}
   };
 }

@@ -4,7 +4,36 @@
   width: 115px;
   height: 39px;
   background-color: $white;
+  font-family: $fontFamily;
+  font-weight: $fontWeightBold;
   border-radius: 28px;
   color: $lightGrey;
   text-transform: uppercase;
+  position: relative;
+  display: inline-flex;
+  // justify-content: center;
+  gap: 22px;
+  align-items: center;
+  padding: 0 17px;
+  @include respon (tab){
+    justify-content: space-between;
+    width: 146px;
+    height: 56px;
+  }
+  &::after{
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 9%;
+    right: 2.5%;
+    background-color: $lightBlack;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    @include respon (tab){
+      top: 15%;
+      width: 40px;
+      height: 40px;
+    }
+  }
 }
