@@ -1,0 +1,7 @@
+
+@mixin respon ($breakpoint) {
+  @if $breakpoint == tab{
+    @media (min-width: 48em)// 768px might change
+    {@content}
+  };
+}

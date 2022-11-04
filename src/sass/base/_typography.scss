@@ -1,57 +1,118 @@
-
-body{
+body {
   font-family: $fontFamily;
 }
 
 // MIGHT not use line heights,
 // especially on single words like headers
 
-.h1-header-style{
+.h1-header-style {
+  // DESKTOP STYLES
   font-size: 200px;
   line-height: 200px;
-  letter-spacing:  -5px;
+  letter-spacing: -5px;
   font-weight: $fontWeightBold;
+  // TABLET STYLES
+  font-size: 175px;
+  line-height: 175px;
+  letter-spacing: -4.38px;
+  // MOBILE STYLES
+  font-size: 100px;
+  line-height: 100px;
+  letter-spacing: -2.5px;
 }
 
-.h2-header-style{
+.h2-header-style {
   font-size: 56px;
   line-height: 68px;
   font-weight: $fontWeightBold;
+  // TABLET STYLES
+  // MOBILE STYLES
 }
 
-.h3-header-style{
+.h3-header-style {
   font-size: 24px;
   line-height: 28px;
   letter-spacing: 4.8px;
   text-transform: uppercase;
   font-weight: $fontWeightBold;
+  // TABLET STYLES
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 3.6px;
+  // MOBILE STYLES
+  font-size: 15px;
+  letter-spacing: 3px;
 }
 
-.h4-header-style{
+.h4-header-style {
+  // DESKTOP STYLES
   font-size: 20px;
   line-height: 28px;
   letter-spacing: 4px;
   font-weight: $fontWeightRegular;
+  // TABLET STYLES
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 3.6px;
+  // Mobile Styles
+  font-size: 15px;
+  line-height: 25px;
+  letter-spacing: 3px;
 }
 
-.h5-header-style{
+.h5-header-style {
   font-size: 18px;
   line-height: 28px;
   font-weight: $fontWeightBold;
+  // TABLET STYLES
+  // MOBILE STYLES
 }
 
-.h6-header-style{
+.h6-header-style {
   font-size: 15px;
   line-height: 28px;
   letter-spacing: 3px;
   font-weight: $fontWeightBold;
+  // TABLET STYLES
+  // MOBILE STYLES
 }
 
-.basic-text-style{
+.timezone-text{
+  // DESKTOP STYLES
+  font-weight: $fontWeightLight;
+  font-size: 40px;
+  line-height: 28px;
+  // TABLET STYLES
+  font-size: 32px;
+  // MOBILE STYLES
+  font-size: 15px;
+}
+
+.basic-text-style {
+  // DESKTOP STYLES
   font-size: 18px;
   line-height: 28px;
   font-weight: $fontWeightRegular;
+  // TABLET STYLES
+  font-size: 18px;
+  line-height: 28px;
+  // MOBILE
+  font-size: 12px;
+  line-height: 22px;
 }
 
+.basic-text-style-bold{
+  font-weight: $fontWeightBold;
+}
 
-
+.btn-text{
+  // DESKTOP
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 5px;
+  // TABLET
+  // MOBILE
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 3.75px;
+}
