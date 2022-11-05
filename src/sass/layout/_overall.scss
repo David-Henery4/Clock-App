@@ -1,16 +1,25 @@
-.overall{
+.overall {
   height: 100vh;
   width: 100vw;
-  background-image: url("../../assets/mobile/bg-image-nighttime.jpg");
+  overflow: hidden;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../../assets/mobile/bg-image-nighttime.jpg");
   background-repeat: no-repeat;
   background-position: 100% 100%;
   background-size: 100% 100%;
   // background-size: cover;
-  @include respon (lrgMob){
-    background-image: url("../../assets/tablet/bg-image-nighttime.jpg");
+  @include respon(lrgMob) {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url("../../assets/tablet/bg-image-nighttime.jpg");
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    background-size: 100% 100%;
   }
-  @include respon (lrgTab){
-    background-image: url("../../assets/desktop/bg-image-nighttime.jpg");
+  @include respon(lrgTab) {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url("../../assets/desktop/bg-image-nighttime.jpg");
     background-size: 101% 100%;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
   }
 }

@@ -11,32 +11,45 @@ body {
   font-size: 100px;
   line-height: 100px;
   letter-spacing: -2.5px;
-  @include respon (lrgMob){
+  @include respon(lrgMob) {
     font-size: 135px;
     line-height: 135px;
     letter-spacing: -3.3px;
   }
-  @include respon (tab){
+  @include respon(tab) {
     // TABLET STYLES
     font-size: 175px;
     line-height: 175px;
     letter-spacing: -4.38px;
   }
-  @include respon (desk){
-  // DESKTOP STYLES
-  font-size: 200px;
-  line-height: 200px;
-  letter-spacing: -5px;
-  font-weight: $fontWeightBold;
+  @include respon(desk) {
+    // DESKTOP STYLES
+    font-size: 200px;
+    line-height: 200px;
+    letter-spacing: -5px;
+    font-weight: $fontWeightBold;
   }
 }
 
 .h2-header-style {
-  font-size: 56px;
-  line-height: 68px;
-  font-weight: $fontWeightBold;
-  // TABLET STYLES
   // MOBILE STYLES
+  font-weight: $fontWeightBold;
+  font-size: 20px;
+  line-height: 24px;
+  @include respon (lrgMob){
+    font-size: 30px;
+    letter-spacing: 36px;
+  }
+  @include respon (tab){
+    // TABLET STYLES
+    font-size: 40px;
+    line-height: 48px;
+  }
+  @include respon (desk){
+    // desktop styles
+    font-size: 56px;
+    line-height: 68px;
+  }
 }
 
 .h3-header-style {
@@ -46,16 +59,16 @@ body {
   font-size: 15px;
   letter-spacing: 3px;
   line-height: 28px;
-  @include respon (respon){
+  @include respon(lrgMob) {
     font-size: 16px;
     letter-spacing: 3.3px;
   }
-  @include respon (tab){
+  @include respon(tab) {
     // TABLET STYLES
     font-size: 18px;
     letter-spacing: 3.6px;
   }
-  @include respon (desk){
+  @include respon(desk) {
     font-size: 24px;
     line-height: 28px;
     letter-spacing: 4.8px;
@@ -68,17 +81,17 @@ body {
   font-size: 15px;
   line-height: 25px;
   letter-spacing: 3px;
-  @include respon (lrgMob){
+  @include respon(lrgMob) {
     font-size: 17px;
     line-height: 27px;
   }
-  @include respon (tab){
+  @include respon(tab) {
     // TABLET STYLES
     font-size: 18px;
     line-height: 28px;
     letter-spacing: 3.6px;
   }
-  @include respon (desk){
+  @include respon(desk) {
     font-size: 20px;
     line-height: 28px;
     letter-spacing: 4px;
@@ -94,27 +107,60 @@ body {
 }
 
 .h6-header-style {
-  font-size: 15px;
+  font-size: 10px;
   line-height: 28px;
-  letter-spacing: 3px;
   font-weight: $fontWeightBold;
-  // TABLET STYLES
-  // MOBILE STYLES
+  letter-spacing: 2px;
+  @include respon(tab) {
+    font-size: 13px;
+    letter-spacing: 2.6px;
+  }
+  @include respon(desk) {
+    font-size: 15px;
+    letter-spacing: 3px;
+  }
 }
 
-.timezone-text{
+.slide-header-style{
+  font-size: 10px;
+  line-height: 28px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  @include respon(tab){
+    font-size: 13px;
+    letter-spacing: 2.6px;
+  }
+  @include respon (desk){
+    font-size: 15px;
+    letter-spacing: 3px;
+  }
+}
+
+// .slide-text-style{
+//   font-size: 20px;
+//   line-height: 24px;
+//   @include respon (tab){
+//     font-size: 40px;
+//     letter-spacing: 48px;
+//   }
+//   @include respon (desk){
+    
+//   }
+// }
+
+.timezone-text {
   font-weight: $fontWeightLight;
   line-height: 28px;
   // MOBILE STYLES
   font-size: 15px;
-  @include respon (lrgMob){
-    font-size: 22px
+  @include respon(lrgMob) {
+    font-size: 22px;
   }
-  @include respon (tab){
+  @include respon(tab) {
     // TABLET STYLES
     font-size: 32px;
   }
-  @include respon (desk){
+  @include respon(desk) {
     font-size: 40px;
   }
 }
@@ -124,31 +170,31 @@ body {
   // MOBILE
   font-size: 12px;
   line-height: 22px;
-  @include respon (lrgMob){
+  @include respon(lrgMob) {
     font-size: 15px;
     line-height: 25px;
   }
-  @include respon (tab){
+  @include respon(tab) {
     // TABLET STYLES
     font-size: 18px;
     line-height: 28px;
   }
 }
 
-.basic-text-style-bold{
+.basic-text-style-bold {
   font-weight: $fontWeightBold;
 }
 
-.btn-text{
+.btn-text {
   // TABLET
   // MOBILE
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 3.75px;
-  @include respon (tab){
-  // DESKTOP
-  font-size: 16px;
-  line-height: 28px;
-  letter-spacing: 5px;
+  @include respon(tab) {
+    // DESKTOP
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 5px;
   }
 }

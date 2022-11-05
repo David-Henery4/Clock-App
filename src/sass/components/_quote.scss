@@ -7,6 +7,7 @@
   justify-content: center;
   gap: 8px;
   position: relative;
+  transition: .5s all;
   @include respon (tab){
     gap: 13px;
   }
@@ -31,4 +32,11 @@
   &__author{
     font-weight: $fontWeightBold;
   }
+}
+
+.quote-slide-active{
+  height: 5%;
+  opacity: 0;
+  transform: translateY(-550%);
+  transition: .5s all;
 }

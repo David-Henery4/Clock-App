@@ -1,7 +1,8 @@
 import React from "react";
 import { Moon, ArrowDown, ArrowUp } from "../assets/desktop";
 
-const HomeContent = () => {
+const HomeContent = ({slideState}) => {
+  const {isSlideInActive, setIsSlideInActive} = slideState
   return (
     <div className="home">
       <div className="time-location">
@@ -24,10 +25,17 @@ const HomeContent = () => {
           in london, uk
         </h3>
       </div>
-      <button className="btn-basic btn-text time-location__btn">
-        more
+      <button
+        className="btn-basic btn-text time-location__btn"
+        onClick={() => setIsSlideInActive(!isSlideInActive)}
+      >
+        {isSlideInActive ? "less" : "more"}
         <span>
-          <ArrowDown className="time-location__btn-icon" />
+          {isSlideInActive ? (
+            <ArrowUp className="time-location__btn-icon" />
+          ) : (
+            <ArrowDown className="time-location__btn-icon" />
+          )}
         </span>
       </button>
     </div>
