@@ -4,7 +4,11 @@
   justify-content: center;
   align-items: flex-start;
   gap: 48px;
+  @include respon (lrgTab){
+    gap: 20px;
+  }
   @include respon (lap){
+    gap: 48px;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;

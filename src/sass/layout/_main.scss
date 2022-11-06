@@ -4,6 +4,8 @@
   padding: 3rem 2.6rem;
   display: flex;
   flex-direction: column;
+  // maybe change space-between
+  // to center when slide active
   justify-content: space-between;
   transition: .5s all;
   // background-size: cover;
@@ -11,14 +13,20 @@
     padding: 4rem 3.6rem
   }
   @include respon (desk){
-    padding: 5rem 13rem 7rem;
+    padding: 3.5rem 13rem;
   }
   @include respon (lrgDesk){
-    padding: 5.6rem 16.5rem 9.8rem;
+    padding: 4.6rem 16.5rem;
   }
 }
 
 .main-slide-active{
   height: 60%;
   transition: .5s all;
+  @include respon (desk){
+    height: 55%;
+  }
+  @include respon (lrgDesk){
+    height: 50%;
+  }
 }
