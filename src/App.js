@@ -1,8 +1,14 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { Quote, HomeContent } from "./components";
+import fetchQuote from "./data/fetching";
 
 function App() {
   const [isSlideInActive, setIsSlideInActive] = useState(false)
+  //
+  // useEffect(() => {
+  //   fetchQuote()
+  // },[])
   //
   return (
     <div className="App overall">

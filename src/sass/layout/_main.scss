@@ -1,4 +1,4 @@
-.main{
+.main {
   width: 100%;
   height: 100%;
   padding: 3rem 2.6rem;
@@ -7,26 +7,27 @@
   // maybe change space-between
   // to center when slide active
   justify-content: space-between;
-  transition: .5s all;
+  transition: 0.5s all;
   // background-size: cover;
-  @include respon (lrgTab){
-    padding: 4rem 3.6rem
+  @include respon(lrgTab) {
+    padding: 4rem 3.6rem;
   }
-  @include respon (desk){
+  @include respon(desk) {
     padding: 3.5rem 13rem;
   }
-  @include respon (lrgDesk){
+  @include respon(lrgDesk) {
     padding: 4.6rem 16.5rem;
   }
 }
 
-.main-slide-active{
+.main-slide-active {
   height: 60%;
-  transition: .5s all;
-  @include respon (desk){
+  transition: 0.5s all;
+  justify-content: center; // might not use because not a smooth animation
+  @include respon(desk) {
     height: 55%;
   }
-  @include respon (lrgDesk){
+  @include respon(lrgDesk) {
     height: 50%;
   }
 }

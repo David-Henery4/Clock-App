@@ -1,7 +1,16 @@
 import React from 'react'
+import {fetchQuote, fetchLocal, fetchWorldTime} from '../data/fetching';
+import { useQuery } from 'react-query';
 import { Refresh } from '../assets/desktop';
 
 const Quote = ({isSlideInActive}) => {
+  // const result = useQuery("quote", fetchQuote)
+  // const worldTime = useQuery("world", fetchWorldTime)
+  // const localData = useQuery("local", fetchlocal)
+  // console.log(result)
+  // console.log(result.data)
+  // console.log(localData.data)
+  // console.log(worldTime.data)
   //
   return (
     <div className={isSlideInActive ? "quote quote-slide-active" : "quote"}>
