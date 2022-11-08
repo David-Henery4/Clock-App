@@ -1,8 +1,15 @@
 import React from "react";
 import { Moon, ArrowDown, ArrowUp } from "../assets/desktop";
 
-const HomeContent = ({slideState}) => {
-  const {isSlideInActive, setIsSlideInActive} = slideState
+const HomeContent = ({
+  slideState,
+  activeTimeLocalData,
+  activeSlideInData,
+}) => {
+  const { isSlideInActive, setIsSlideInActive } = slideState;
+  console.log(activeSlideInData);
+  
+  //
   return (
     <div className="home">
       <div className="time-location">
@@ -19,10 +26,12 @@ const HomeContent = ({slideState}) => {
           <h1 className="h1-header-style time-location-timezone__time">
             24:14
           </h1>
-          <p className="timezone-text time-location-timezone__zone">BST</p>
+          <p className="timezone-text time-location-timezone__zone">
+            {activeSlideInData?.abbreviation}
+          </p>
         </div>
         <h3 className="h3-header-style time-location__location">
-          in london, uk
+          in {activeTimeLocalData?.city}, {activeTimeLocalData?.countryCode}
         </h3>
       </div>
       <button
