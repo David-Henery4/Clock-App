@@ -1,30 +1,45 @@
-import React from 'react'
-import {fetchQuote, fetchLocal, fetchWorldTime} from '../data/fetching';
-import { useQuery } from 'react-query';
-import { Refresh } from '../assets/desktop';
+import React from "react";
+import { fetchQuote, fetchLocal, fetchWorldTime } from "../data/fetching";
+import { useQuery } from "react-query";
+import { Refresh } from "../assets/desktop";
+import { useState } from "react";
 
-const Quote = ({isSlideInActive}) => {
-  // const result = useQuery("quote", fetchQuote)
-  // const worldTime = useQuery("world", fetchWorldTime)
-  // const localData = useQuery("local", fetchlocal)
-  // console.log(result)
-  // console.log(result.data)
-  // console.log(localData.data)
-  // console.log(worldTime.data)
+const Quote = ({ isSlideInActive, initialData }) => {
+  let quoteData;
+  if (initialData) {
+    const { data } = initialData.find((eachInitData) =>
+      eachInitData.request.responseURL.includes("quotes")
+    );
+    quoteData = data;
+  }
+  //
+  const {refetch, data, isError, isLoading, isSuccess} = useQuery("quote", fetchQuote, {
+    refetchOnWindowFocus: false,
+    staleTime: Infinity,
+    enabled: false,
+  });
+  if (isSuccess){
+    quoteData = data
+  }
   //
   return (
     <div className={isSlideInActive ? "quote quote-slide-active" : "quote"}>
-      <div className="quote-text-icon-wrap">
-        <Refresh className="quote__refresh-icon" />
-        <p className="quote__text basic-text-style">
-          “The science of operations, as derived from mathematics more
-          especially, is a science of itself, and has its own abstract truth and
-          value.”
-        </p>
-      </div>
-      <p className="quote__author basic-text-style">Ada Lovelace</p>
+      {isLoading ? (
+        <div className="lds-dual-ring"></div>
+      ) : (
+        <>
+          <div className="quote-text-icon-wrap">
+            <Refresh
+              className="quote__refresh-icon"
+              onClick={() => refetch()}
+            />
+            <p className="quote__text basic-text-style">“{quoteData?.en}.”</p>
+          </div>
+          <p className="quote__author basic-text-style">{quoteData?.author}</p>
+        </>
+      )}
     </div>
   );
 };
 
-export default Quote
+export default Quote;

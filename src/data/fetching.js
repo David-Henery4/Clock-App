@@ -1,32 +1,26 @@
 import axios from "axios";
 
-// BASE APIS BEING USED
 //
-// programming joke: https://programming-quotes-api.herokuapp.com/Quotes/random
-//
-// WILL CHANGE KEY TO ENVIROMENT VARIABLE.
-// api key for "ipbase": JpkaKGh1pqDg34k8KrQjyNaKe0bDkz66t3VOn39a
-// ipbase url: https://api.ipbase.com/v2/info?apikey=JpkaKGh1pqDg34k8KrQjyNaKe0bDkz66t3VOn39a&ip=1.1.1.1
 
-export const fetchAll = async () => {
+export const fetchAllData = async () => {
   try {
     const calls = [
-      "https://api.ipbase.com/v2/info?apikey=JpkaKGh1pqDg34k8KrQjyNaKe0bDkz66t3VOn39a&ip=1.1.1.1",
+      "http://ip-api.com/json/",
       "https://programming-quotes-api.herokuapp.com/Quotes/random",
       "http://worldtimeapi.org/api/ip",
     ];
-    const urls = []
+    const promises = []
+    //
     calls.forEach(call => {
-      const data = axios.get(call)
-      urls.push(data)
+      const dataProm = axios.get(call)
+      promises.push(dataProm)
     })
-    const res = await Promise.all(urls)
-    console.log(res)
-    // const {data} = await axios.get()
+    const data = await Promise.all(promises)
+    return data
+    //
   } catch (error) {}
 };
 
-// fetchAll()
 
 export const fetchQuote = async () => {
   try {
@@ -41,9 +35,7 @@ export const fetchQuote = async () => {
 
 export const fetchLocal = async () => {
   try {
-    const { data } = await axios.get(
-      "https://api.ipbase.com/v2/info?apikey=JpkaKGh1pqDg34k8KrQjyNaKe0bDkz66t3VOn39a&ip=1.1.1.1"
-    );
+    const { data } = await axios.get("http://ip-api.com/json/");
     return data;
   } catch (error) {
     console.log(error.response);
@@ -58,3 +50,21 @@ export const fetchWorldTime = async () => {
     console.log(error.response);
   }
 };
+
+// export const fetchAll = async () => {
+//   try {
+//     const calls = [
+//       "https://api.ipbase.com/v2/info?apikey=JpkaKGh1pqDg34k8KrQjyNaKe0bDkz66t3VOn39a&ip=1.1.1.1",
+//       "https://programming-quotes-api.herokuapp.com/Quotes/random",
+//       "http://worldtimeapi.org/api/ip",
+//     ];
+//     const urls = [];
+//     calls.forEach((call) => {
+//       const data = axios.get(call);
+//       urls.push(data);
+//     });
+//     const res = await Promise.all(urls);
+//     console.log(res);
+//     // const {data} = await axios.get()
+//   } catch (error) {}
+// };
