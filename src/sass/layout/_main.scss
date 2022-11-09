@@ -23,7 +23,7 @@
 .main-slide-active {
   height: 60%;
   transition: 0.5s all;
-  justify-content: center; // might not use because not a smooth animation
+  // justify-content: center; // might not use because not a smooth animation
   @include respon(desk) {
     height: 55%;
   }

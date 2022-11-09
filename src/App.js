@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { Quote, HomeContent, SlideIn, Overlay } from "./components";
+import { Quote, HomeContent, SlideIn, Overlay, ErrorModal } from "./components";
 import { fetchAllData } from "./data/fetching";
 
 function App() {
@@ -10,15 +10,16 @@ function App() {
   const [activeSlideInData, setActiveSlideInData] = useState({});
   const [activeTimeLocalData, setActiveTimeLocalData] = useState({});
   const [currentTime, setCurrentTime] = useState(0);
-  const [isNight,setIsNight] = useState(false)
-  // const [active, setActiveData] = useState([])
+  const [isNight, setIsNight] = useState(false);
   //
   const {
     data: initialData,
     isLoading,
     isError,
+    error,
     refetch,
     isSuccess,
+    status
   } = useQuery("allData", fetchAllData, {
     refetchOnWindowFocus: false,
     staleTime: Infinity,
@@ -26,24 +27,30 @@ function App() {
   });
   //
   const findQuoteData = (fullData) => {
-    const { data } = fullData.find((eachInitData) =>
+    if (fullData){
+      const { data } = fullData?.find((eachInitData) =>
       eachInitData.request.responseURL.includes("quotes")
-    );
-    setActiveQuoteData(data);
+      );
+      setActiveQuoteData(data);
+    }
   };
   //
   const findSlideInData = (fullData) => {
-    const { data } = fullData.find((eachInitData) =>
+    if (fullData){
+      const { data } = fullData?.find((eachInitData) =>
       eachInitData.request.responseURL.includes("worldtimeapi")
-    );
-    setActiveSlideInData(data);
+      );
+      setActiveSlideInData(data);
+    }
   };
   //
   const findHomeContentData = (fullData) => {
-    const { data } = fullData.find((eachInitData) =>
+    if (fullData){
+      const { data } = fullData?.find((eachInitData) =>
       eachInitData.request.responseURL.includes("ip-api")
-    );
-    setActiveTimeLocalData(data);
+      );
+      setActiveTimeLocalData(data);
+    }
   };
   //
   const getTime = () => {
@@ -56,14 +63,17 @@ function App() {
   const dayOrNight = () => {
     const hours = new Date().getHours();
     if (hours >= 5 && hours < 18) {
-      setIsNight(false)
+      setIsNight(false);
+      // return false
     }
-    if (hours >= 18 || hours < 5 ){
-      setIsNight(true)
+    if (hours >= 18 || hours < 5) {
+      setIsNight(true);
+      // return true
     }
   };
   //
   useEffect(() => {
+    dayOrNight()
     setInterval(() => {
       dayOrNight();
       getTime();
@@ -81,10 +91,16 @@ function App() {
   return (
     <div className={isNight ? "App overall bg-night" : "App overall bg-day"}>
       <main className={isSlideInActive ? "main main-slide-active" : "main"}>
+        {isError && 
+        <>
+        <ErrorModal refetch={refetch}/>
+        <Overlay isError={isError}/>
+        </>
+        }
         {isLoading ? (
           <>
-          <div className="lds-dual-ring-main"></div>
-          <Overlay/>
+            <div className="lds-dual-ring-main"></div>
+            <Overlay />
           </>
         ) : (
           <>

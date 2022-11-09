@@ -1,9 +1,7 @@
 import React from 'react'
 
-const Overlay = () => {
-  return (
-    <div className='overlay'></div>
-  )
+const Overlay = ({isError}) => {
+  return <div className={isError ? "overlay overlay-error" : "overlay"}></div>;
 }
 
 export default Overlay

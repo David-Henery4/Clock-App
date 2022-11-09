@@ -17,7 +17,8 @@ export const fetchAllData = async () => {
     return data
     //
   } catch (error) {
-    console.error(error.response)
+    console.error(error.message)
+    throw new Error(error)
   }
 };
 
@@ -28,6 +29,7 @@ export const fetchQuote = async () => {
     );
     return data;
   } catch (error) {
-    console.log(error.response);
+    console.error(error.message)
+    throw new Error(error)
   }
 };

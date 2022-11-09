@@ -41,9 +41,22 @@ const Quote = ({ isSlideInActive, activeQuoteData }) => {
                 refetch();
               }}
             />
-            <p className="quote__text basic-text-style">“{currentQuote?.en}.”</p>
+            {isError ? (
+              <p className="quote__text basic-text-style">
+                There has been a error getting this quote, please refresh to try
+                again.
+              </p>
+            ) : (
+              <p className="quote__text basic-text-style">
+                “{currentQuote?.en}.”
+              </p>
+            )}
           </div>
-          <p className="quote__author basic-text-style">{currentQuote?.author}</p>
+          {isError || (
+            <p className="quote__author basic-text-style">
+              {currentQuote?.author}
+            </p>
+          )}
         </>
       )}
     </div>
