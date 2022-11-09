@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { Quote, HomeContent, SlideIn } from "./components";
+import { Quote, HomeContent, SlideIn, Overlay } from "./components";
 import { fetchAllData } from "./data/fetching";
 
 function App() {
@@ -82,7 +82,10 @@ function App() {
     <div className={isNight ? "App overall bg-night" : "App overall bg-day"}>
       <main className={isSlideInActive ? "main main-slide-active" : "main"}>
         {isLoading ? (
-          <div className="lds-dual-ring"></div>
+          <>
+          <div className="lds-dual-ring-main"></div>
+          <Overlay/>
+          </>
         ) : (
           <>
             <Quote
