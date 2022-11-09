@@ -1,26 +1,32 @@
 import React from "react";
-import { fetchQuote, fetchLocal, fetchWorldTime } from "../data/fetching";
+import { fetchQuote } from "../data/fetching";
 import { useQuery } from "react-query";
 import { Refresh } from "../assets/desktop";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Quote = ({ isSlideInActive, initialData }) => {
-  let quoteData;
-  if (initialData) {
-    const { data } = initialData.find((eachInitData) =>
-      eachInitData.request.responseURL.includes("quotes")
-    );
-    quoteData = data;
-  }
+
+const Quote = ({ isSlideInActive, activeQuoteData }) => {
+  const [currentQuote, setCurrentQuote] = useState("")
   //
-  const {refetch, data, isError, isLoading, isSuccess} = useQuery("quote", fetchQuote, {
-    refetchOnWindowFocus: false,
-    staleTime: Infinity,
-    enabled: false,
-  });
-  if (isSuccess){
-    quoteData = data
-  }
+  const { refetch, data, isError, isLoading, isSuccess } = useQuery(
+    "quote",
+    fetchQuote,
+    {
+      refetchOnWindowFocus: false,
+      staleTime: Infinity,
+      enabled: false,
+    }
+  );
+  //
+  useEffect(() => {
+    if (isSuccess){
+      setCurrentQuote(data);
+    }
+  },[data])
+  //
+  useEffect(() => {
+    setCurrentQuote(activeQuoteData)
+  }, [activeQuoteData])
   //
   return (
     <div className={isSlideInActive ? "quote quote-slide-active" : "quote"}>
@@ -31,11 +37,13 @@ const Quote = ({ isSlideInActive, initialData }) => {
           <div className="quote-text-icon-wrap">
             <Refresh
               className="quote__refresh-icon"
-              onClick={() => refetch()}
+              onClick={() => {
+                refetch();
+              }}
             />
-            <p className="quote__text basic-text-style">“{quoteData?.en}.”</p>
+            <p className="quote__text basic-text-style">“{currentQuote?.en}.”</p>
           </div>
-          <p className="quote__author basic-text-style">{quoteData?.author}</p>
+          <p className="quote__author basic-text-style">{currentQuote?.author}</p>
         </>
       )}
     </div>

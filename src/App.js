@@ -54,8 +54,6 @@ function App() {
   };
   //
   const dayOrNight = () => {
-    //  - The sun icon and the daytime background image between 5am and 6pm
-    // The moon icon and the nighttime background image between 6pm and 5am
     const hours = new Date().getHours();
     if (hours >= 5 && hours < 18) {
       setIsNight(false)
@@ -90,6 +88,7 @@ function App() {
             <Quote
               isSlideInActive={isSlideInActive}
               initialData={initialData}
+              activeQuoteData={activeQuoteData}
             />
             <HomeContent
               slideState={{ isSlideInActive, setIsSlideInActive }}
