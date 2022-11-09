@@ -9,6 +9,8 @@ function App() {
   const [activeQuoteData, setActiveQuoteData] = useState({});
   const [activeSlideInData, setActiveSlideInData] = useState({});
   const [activeTimeLocalData, setActiveTimeLocalData] = useState({});
+  const [currentTime, setCurrentTime] = useState(0);
+  const [isNight,setIsNight] = useState(false)
   // const [active, setActiveData] = useState([])
   //
   const {
@@ -44,6 +46,32 @@ function App() {
     setActiveTimeLocalData(data);
   };
   //
+  const getTime = () => {
+    const hours = new Date().getHours().toString().padStart(2, "0");
+    const mins = new Date().getMinutes().toString().padStart(2, "0");
+    const time = `${hours}:${mins}`;
+    setCurrentTime(time);
+  };
+  //
+  const dayOrNight = () => {
+    //  - The sun icon and the daytime background image between 5am and 6pm
+    // The moon icon and the nighttime background image between 6pm and 5am
+    const hours = new Date().getHours();
+    if (hours >= 5 && hours < 18) {
+      setIsNight(false)
+    }
+    if (hours >= 18 || hours < 5 ){
+      setIsNight(true)
+    }
+  };
+  //
+  useEffect(() => {
+    setInterval(() => {
+      dayOrNight();
+      getTime();
+    }, 1000);
+  }, []);
+  //
   useEffect(() => {
     if (isSuccess) {
       findHomeContentData(initialData);
@@ -53,7 +81,7 @@ function App() {
   }, [initialData]);
   //
   return (
-    <div className="App overall">
+    <div className={isNight ? "App overall bg-night" : "App overall bg-day"}>
       <main className={isSlideInActive ? "main main-slide-active" : "main"}>
         {isLoading ? (
           <div className="lds-dual-ring"></div>
@@ -67,11 +95,16 @@ function App() {
               slideState={{ isSlideInActive, setIsSlideInActive }}
               activeTimeLocalData={activeTimeLocalData}
               activeSlideInData={activeSlideInData}
+              currentTime={currentTime}
+              isNight={isNight}
             />
           </>
         )}
       </main>
-      <SlideIn isSlideInActive={isSlideInActive} initialData={initialData} />
+      <SlideIn
+        isSlideInActive={isSlideInActive}
+        activeSlideInData={activeSlideInData}
+      />
     </div>
   );
 }

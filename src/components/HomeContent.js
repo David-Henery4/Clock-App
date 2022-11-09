@@ -1,22 +1,42 @@
 import React from "react";
-import { Moon, ArrowDown, ArrowUp } from "../assets/desktop";
+import { useEffect } from "react";
+import { useState } from "react";
+import { Moon, ArrowDown, ArrowUp, Sun } from "../assets/desktop";
 
 const HomeContent = ({
   slideState,
   activeTimeLocalData,
   activeSlideInData,
+  currentTime,
+  isNight,
 }) => {
   const { isSlideInActive, setIsSlideInActive } = slideState;
-  console.log(activeSlideInData);
-  
+  //
+  const setGreeting = () => {
+    const hour = new Date().getHours()
+    if (hour >= 0 && hour < 12){
+      return "Good Morning"
+    }
+    if (hour >= 12 && hour < 18){
+      return "Good Afternoon"
+    }
+    if (hour >= 18 && hour < 24){
+      return "Good Evening"
+    }
+  }
   //
   return (
     <div className="home">
       <div className="time-location">
         <div className="time-location-msg">
-          <Moon className="time-location-msg__icon" />
+          {isNight ? (
+            <Moon className="time-location-msg__icon" />
+          ) : (
+            <Sun className="time-location-msg__icon" />
+          )}
+
           <h4 className="h4-header-style time-location-msg__greeting">
-            GOOD EVENING
+            {setGreeting()}
             <span className="time-location-msg__greeting--extra">
               , IT’S CURRENTLY
             </span>
@@ -24,7 +44,7 @@ const HomeContent = ({
         </div>
         <div className="time-location-timezone">
           <h1 className="h1-header-style time-location-timezone__time">
-            24:14
+            {currentTime}
           </h1>
           <p className="timezone-text time-location-timezone__zone">
             {activeSlideInData?.abbreviation}
