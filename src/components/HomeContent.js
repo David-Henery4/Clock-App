@@ -1,5 +1,5 @@
 import React from "react";
-import { Moon, ArrowDown, ArrowUp, Sun } from "../assets/desktop";
+import { Moon, ArrowDown, ArrowUp, Sun, ArrowDownCircle } from "../assets/desktop";
 
 const HomeContent = ({
   slideState,
@@ -61,7 +61,7 @@ const HomeContent = ({
           {isSlideInActive ? (
             <ArrowUp className="time-location__btn-icon" />
           ) : (
-            <ArrowDown className="time-location__btn-icon" />
+            <ArrowUp className="time-location__btn-icon time-location__btn-icon-active" />
           )}
         </span>
       </button>
