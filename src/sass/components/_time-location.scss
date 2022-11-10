@@ -7,8 +7,6 @@
   &-msg {
     display: flex;
     gap: 17px;
-    &__icon {
-    }
     &__greeting {
       &--extra {
         display: none;
@@ -29,41 +27,15 @@
       flex-direction: row;
       align-items: baseline;
     }
-    &__time {
-    }
-    &__zone {
-    }
   }
-
-  &__location {
-  }
-
   &__btn {
     &-text{
       width: 75%;
-      // height: 100%;
-      // display: grid;
-      // place-items: center;
     }
     &-whole-icon{
       width: 25%;
       position: absolute;
       right: 5%;
-    }
-    &-icon {
-      // position: absolute;
-      // z-index: 1;
-      // top: -2%;
-      // right: 0%;
-      // width: 4rem;
-      // @include respon (lap){
-      //   width: 8rem;
-      //   right: -10%;
-      //   top: 12.5%;
-      // }
-      // &-active {
-      //   transform: rotate(180deg);
-      // }
     }
   }
   &-btn-circle{
@@ -79,7 +51,6 @@
       width: 40px;
     }
     &__icon{
-
       &-active{
         transform: rotate(180deg);
       }

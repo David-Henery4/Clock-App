@@ -16,10 +16,8 @@ function App() {
     data: initialData,
     isLoading,
     isError,
-    error,
     refetch,
     isSuccess,
-    status
   } = useQuery("allData", fetchAllData, {
     refetchOnWindowFocus: false,
     staleTime: Infinity,

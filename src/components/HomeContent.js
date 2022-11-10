@@ -2,10 +2,7 @@ import React from "react";
 import {
   Moon,
   ArrowDown,
-  ArrowUp,
   Sun,
-  ArrowDownCircle,
-  ArrowUpCircle,
 } from "../assets/desktop";
 
 const HomeContent = ({

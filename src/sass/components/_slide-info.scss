@@ -2,22 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // gap: 29px;
   @include respon (lrgTab){
     flex-direction: column;
     align-items: flex-start;
   }
-}
-
-.local-info{
-  
-}
-.day-year-info{
-  
-}
-.day-week-info{
-  
-}
-.week-num-info{
-  
 }
