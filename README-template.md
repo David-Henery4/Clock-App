@@ -14,15 +14,12 @@ This is a solution to the [Clock app challenge on Frontend Mentor](https://www.f
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
 ### The challenge
 
-Users should be able to:
+Users can:
 
 - View the optimal layout for the site depending on their device's screen size
 - See hover states for all interactive elements on the page
@@ -33,18 +30,11 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![Background-Screenshot](./readme-image/screenshot-background.png)
 
 ### Links
 
+<!-- Links to be added -->
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
@@ -53,63 +43,89 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
 - Flexbox
 - CSS Grid
+- SASS
+- SASS Mixins
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- [React-Query](https://react-query-v3.tanstack.com) - React api data handling library
+- [Axios](https://axios-http.com) - Promise based api calling library
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+When I started this project, because it is a small project, I didn't want to use redux-toolkit and asyncthunk to fetch the data from the api, as I thought this would be a bit overkill. I also didn't want to just call and fetch the data in the component using useEffect. This lead me to researching all the different ways of fetching and handling data inside of react.
 
-To see how you can add code snippets, see below:
+After a bit of research and finding all sorts of different ways of doing this. (Eg - Using things like custom hooks with the fetch api or axios to get and handle the data). I stumbled upon a library called react-query.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+React-query is a react library for fetching and handling api data. It is primarily used for fetching, editing, adding and deleting server side state data. It also come with various tools and behaviours which make fetching and handling a lot better. (Eg - We can have access to different statuses when making the api calls, such as isLoading. We can use these to create things like loading spinners when it is fetching, and statuses like isError, which allows us to handle the error state a lot easier if somthing were to go wrong.) Another good behaviour that is has, is that it can be called on set intervals, this is to make sure the data of the application is always up to date and doesn't go stale.
+
+Overall, react-query does a lot more than this and reading though their documentation it is clear I have barely scratched the surface of what react-query can do, which is well beyond the scope of what I needed for this project.
+Although it seems it can not only be used for projects as small as this one but can be used for much much bigger projects. Thats why, in the future, I look foward to seeing what this library can do on bigger projects and will be using it more in the future.
+
+
+Here were calling the "fetchAllData" function with useQuery, We can destructor the different status variables we need, while also using config object to control the default behaviours of useQuery.
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+  const {
+    data: initialData,
+    isLoading,
+    isError,
+    refetch,
+    isSuccess,
+  } = useQuery("allData", fetchAllData, {
+    refetchOnWindowFocus: false,
+    staleTime: Infinity,
+    
+  });
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+Here were using axios to fetch all three different apis at once, and resolve them using Promise.all(), which waits for all the promises to be resolved before being successfull, we then call and handle this function and data as the callback in the useQuery hook above. 
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+```js
+export const fetchAllData = async () => {
+  try {
+    const calls = [
+      "http://ip-api.com/json/",
+      "https://programming-quotes-api.herokuapp.com/Quotes/random",
+      "http://worldtimeapi.org/api/ip",
+    ];
+    const promises = []
+    //
+    calls.forEach(call => {
+      const dataProm = axios.get(call)
+      promises.push(dataProm)
+    })
+    const data = await Promise.all(promises)
+    return data
+    //
+  } catch (error) {
+    console.error(error.message)
+    throw new Error(error)
+  }
+};
+```
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+In the future I will definitly like to try using the react-query library to handle data on a bigger project. I also would like to try other Similar libraries like another one I found when researching called Redux-Toolkit-query. Which is libray like react-query but used in the context of redux-toolkit and I would like to see the pros and cons of using this type of library over using something like asyncthunk, which I had been using previously. 
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+Overall I think trying out these different libraries and different ways of handling api data in react will help me understand and learn the whole concept and proccess a lot better.
+
+So in the future I can make a better judgement on how?, why?, what? and when? to use which tool and technique to suit different types of projects, and can help me choose which way is the best needed to use on a specific job or project.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [React-query-Documentation](https://www.example.com) - This is a good place to start when using react-query, and can help you get up and running quite quickly.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [TkDodo's blog Practical React Query](https://tkdodo.eu/blog/practical-react-query) - There is also this blog that they recomend though their documentation which can be quite helpfull.
+
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [David Henery](https://www.djhwebdevelopment.com)
+- Frontend Mentor - [@David-Henery4](https://www.frontendmentor.io/profile/David-Henery4)
+- linkedIn - [David Henery](https://www.linkedin.com/in/david-henery-725458241)
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
