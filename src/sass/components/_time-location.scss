@@ -57,3 +57,7 @@
     }
   }
 }
+
+.time-location__btn:hover > .time-location__btn-whole-icon > .time-location-btn-circle{
+  background-color: $lightGrey;
+}
