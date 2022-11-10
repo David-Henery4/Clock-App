@@ -39,20 +39,50 @@
   }
 
   &__btn {
-    &-icon {
+    &-text{
+      width: 75%;
+      // height: 100%;
+      // display: grid;
+      // place-items: center;
+    }
+    &-whole-icon{
+      width: 25%;
       position: absolute;
-      z-index: 1;
-      top: -2%;
-      right: 0%;
-      width: 4rem;
-      @include respon (lap){
-        width: 8rem;
-        right: -10%;
-        top: 12.5%;
-      }
+      right: 5%;
+    }
+    &-icon {
+      // position: absolute;
+      // z-index: 1;
+      // top: -2%;
+      // right: 0%;
+      // width: 4rem;
+      // @include respon (lap){
+      //   width: 8rem;
+      //   right: -10%;
+      //   top: 12.5%;
+      // }
       // &-active {
       //   transform: rotate(180deg);
       // }
+    }
+  }
+  &-btn-circle{
+    position: relative;
+    background-color: $lightBlack;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    @include respon (lap){
+      height: 40px;
+      width: 40px;
+    }
+    &__icon{
+
+      &-active{
+        transform: rotate(180deg);
+      }
     }
   }
 }

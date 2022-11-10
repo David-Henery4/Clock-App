@@ -1,5 +1,12 @@
 import React from "react";
-import { Moon, ArrowDown, ArrowUp, Sun, ArrowDownCircle, ArrowUpCircle } from "../assets/desktop";
+import {
+  Moon,
+  ArrowDown,
+  ArrowUp,
+  Sun,
+  ArrowDownCircle,
+  ArrowUpCircle,
+} from "../assets/desktop";
 
 const HomeContent = ({
   slideState,
@@ -11,17 +18,17 @@ const HomeContent = ({
   const { isSlideInActive, setIsSlideInActive } = slideState;
   //
   const setGreeting = () => {
-    const hour = new Date().getHours()
-    if (hour >= 0 && hour < 12){
-      return "Good Morning"
+    const hour = new Date().getHours();
+    if (hour >= 0 && hour < 12) {
+      return "Good Morning";
     }
-    if (hour >= 12 && hour < 18){
-      return "Good Afternoon"
+    if (hour >= 12 && hour < 18) {
+      return "Good Afternoon";
     }
-    if (hour >= 18 && hour < 24){
-      return "Good Evening"
+    if (hour >= 18 && hour < 24) {
+      return "Good Evening";
     }
-  }
+  };
   //
   return (
     <div className="home">
@@ -56,13 +63,19 @@ const HomeContent = ({
         className="btn-basic btn-text time-location__btn"
         onClick={() => setIsSlideInActive(!isSlideInActive)}
       >
-        {isSlideInActive ? "less" : "more"}
-        <span>
-          {isSlideInActive ? (
-            <ArrowUpCircle className="time-location__btn-icon" />
-          ) : (
-            <ArrowDownCircle className="time-location__btn-icon" />
-          )}
+        <span className="time-location__btn-text">
+          {isSlideInActive ? "less" : "more"}
+        </span>
+        <span className="time-location__btn-whole-icon">
+          <span className="time-location-btn-circle">
+            <ArrowDown
+              className={
+                isSlideInActive
+                  ? "time-location-btn-circle__icon time-location-btn-circle__icon-active"
+                  : "time-location-btn-circle__icon"
+              }
+            />
+          </span>
         </span>
       </button>
     </div>
