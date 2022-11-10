@@ -21,13 +21,14 @@
 }
 
 .main-slide-active {
-  height: 60%;
+  // height: 60%;
   transition: 0.5s all;
+  transform: translateY(-40%);
   // justify-content: center; // might not use because not a smooth animation
   @include respon(desk) {
-    height: 55%;
+    transform: translateY(-47.5%);
   }
   @include respon(lrgDesk) {
-    height: 50%;
+    transform: translateY(-50%);
   }
 }

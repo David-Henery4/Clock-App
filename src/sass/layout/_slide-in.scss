@@ -5,7 +5,7 @@
   background-color: rgba(0,0,0,.75);
   backdrop-filter: blur(4px);
   transition: .5s all;
-  transform: translateY(100%);
+  // transform: translateY(100%);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(265px,1fr));
   align-content: center;
@@ -47,5 +47,5 @@
 // of the main section speed/type
 .slide-in-slide-active{
   transition: .5s all;
-  transform: translateY(0%);
+  transform: translateY(-100%);
 }

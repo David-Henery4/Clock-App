@@ -1,56 +1,58 @@
-.time-location{
+.time-location {
   display: flex;
   flex-direction: column;
   gap: 16px;
   justify-content: center;
   align-items: flex-start;
-  &-msg{
+  &-msg {
     display: flex;
     gap: 17px;
-    &__icon{
-      
+    &__icon {
     }
-    &__greeting{
-      &--extra{
+    &__greeting {
+      &--extra {
         display: none;
-        @include respon (tab){
+        @include respon(tab) {
           display: inline;
         }
       }
     }
   }
-  
-  &-timezone{
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 16px;
-  @include respon (mob){
-    flex-direction: row;
-    align-items: baseline;
-  }
-    &__time{
-      
+
+  &-timezone {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    @include respon(mob) {
+      flex-direction: row;
+      align-items: baseline;
     }
-    &__zone{
-      
+    &__time {
+    }
+    &__zone {
     }
   }
-  
-  &__location{
-    
+
+  &__location {
   }
-  
-  &__btn{
-    &-icon{
+
+  &__btn {
+    &-icon {
       position: absolute;
       z-index: 1;
-      top: 12.5%;
-      right: 5%;
-      &-active{
-        transform: rotate(180deg);
+      top: -2%;
+      right: 0%;
+      width: 4rem;
+      @include respon (lap){
+        width: 8rem;
+        right: -10%;
+        top: 12.5%;
       }
+      // &-active {
+      //   transform: rotate(180deg);
+      // }
     }
   }
 }
