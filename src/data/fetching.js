@@ -3,7 +3,7 @@ import axios from "axios";
 export const fetchAllData = async () => {
   try {
     const calls = [
-      "/geo/json/",
+      "http://ip-api.com/json/",
       "https://programming-quotes-api.herokuapp.com/Quotes/random",
       "/world/api/ip",
     ];

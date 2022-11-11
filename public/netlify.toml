@@ -1,8 +1,4 @@
 [[redirects]]
-from = "/geo/*"
-to = "http://ip-api.com/:splat"
-status = 200
-force = true
 from = "/world/*"
 to = "http://worldtimeapi.org/:splat"
 status = 200
