@@ -2,10 +2,11 @@ import axios from "axios";
 
 export const fetchAllData = async () => {
   try {
+    // "/time/ip"
     const calls = [
       "https://ipapi.co/json/",
       "https://programming-quotes-api.herokuapp.com/Quotes/random",
-      "/time/ip",
+      "http://worldtimeapi.org/api/ip",
     ];
     const promises = [];
     //

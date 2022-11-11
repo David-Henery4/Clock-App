@@ -1,6 +1,10 @@
 import React from "react";
 
-const slideIn = ({ isSlideInActive, activeSlideInData }) => {
+const slideIn = ({
+  isSlideInActive,
+  activeSlideInData,
+  activeTimeLocalData,
+}) => {
   //
   return (
     <aside
@@ -11,7 +15,7 @@ const slideIn = ({ isSlideInActive, activeSlideInData }) => {
       <div className="slide-in-col slide-in-col-1">
         <div className="info-style local-info">
           <h3 className="slide-header-style">CURRENT TIMEZONE</h3>
-          <h2 className="h2-header-style">{activeSlideInData?.timezone}</h2>
+          <h2 className="h2-header-style">{activeTimeLocalData?.timezone}</h2>
         </div>
         <div className="info-style day-year-info">
           <h3 className="slide-header-style">Day of the year</h3>

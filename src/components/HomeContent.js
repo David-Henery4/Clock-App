@@ -26,6 +26,8 @@ const HomeContent = ({
       return "Good Evening";
     }
   };
+  console.log(activeSlideInData)
+  console.log(activeTimeLocalData)
   //
   return (
     <div className="home">

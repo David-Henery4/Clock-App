@@ -120,6 +120,7 @@ function App() {
       <SlideIn
         isSlideInActive={isSlideInActive}
         activeSlideInData={activeSlideInData}
+        activeTimeLocalData={activeTimeLocalData}
       />
     </div>
   );
