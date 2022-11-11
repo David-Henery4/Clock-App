@@ -36,7 +36,7 @@ function App() {
   const findSlideInData = (fullData) => {
     if (fullData){
       const { data } = fullData?.find((eachInitData) =>
-      eachInitData.request.responseURL.includes("worldtimeapi")
+      eachInitData.request.responseURL.includes("time")
       );
       setActiveSlideInData(data);
     }
