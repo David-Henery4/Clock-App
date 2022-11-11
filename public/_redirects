@@ -1,3 +1,2 @@
 /api/* http://ip-api.com/:splat 200!
 
-/apiworld/* http://worldtimeapi.org/:splat 200!
