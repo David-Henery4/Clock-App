@@ -5,20 +5,20 @@ export const fetchAllData = async () => {
     const calls = [
       "https://ipapi.co/json/",
       "https://programming-quotes-api.herokuapp.com/Quotes/random",
-      "api/api/ip",
+      "http://worldtimeapi.org/api/ip",
     ];
-    const promises = []
+    const promises = [];
     //
-    calls.forEach(call => {
-      const dataProm = axios.get(call)
-      promises.push(dataProm)
-    })
-    const data = await Promise.all(promises)
-    return data
+    calls.forEach((call) => {
+      const dataProm = axios.get(call);
+      promises.push(dataProm);
+    });
+    const data = await Promise.all(promises);
+    return data;
     //
   } catch (error) {
-    console.error(error.message)
-    throw new Error(error)
+    console.error(error.message);
+    throw new Error(error);
   }
 };
 
@@ -29,7 +29,7 @@ export const fetchQuote = async () => {
     );
     return data;
   } catch (error) {
-    console.error(error.message)
-    throw new Error(error)
+    console.error(error.message);
+    throw new Error(error);
   }
 };
