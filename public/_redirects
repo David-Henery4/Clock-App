@@ -1,2 +1,0 @@
-
-/api/* http://worldtimeapi.org/api/:splat 200!

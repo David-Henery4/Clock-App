@@ -1,0 +1,5 @@
+[[redirects]]
+from = "/feed/*"
+to = "http://worldtimeapi.org/api/:splat"
+status = 200
+force = true
