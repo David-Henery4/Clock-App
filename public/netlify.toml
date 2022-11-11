@@ -1,5 +1,5 @@
 [[redirects]]
-from = "/feed/*"
-to = "http://worldtimeapi.org/api/:splat"
+from = "/api/*"
+to = "http://worldtimeapi.org/:splat"
 status = 200
 force = true
