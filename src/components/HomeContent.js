@@ -53,7 +53,7 @@ const HomeContent = ({
           </p>
         </div>
         <h3 className="h3-header-style time-location__location">
-          in {activeTimeLocalData?.city}, {activeTimeLocalData?.countryCode}
+          in {activeTimeLocalData?.city}, {activeTimeLocalData?.region_code}
         </h3>
       </div>
       <button

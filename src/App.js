@@ -45,7 +45,7 @@ function App() {
   const findHomeContentData = (fullData) => {
     if (fullData){
       const { data } = fullData?.find((eachInitData) =>
-      eachInitData.request.responseURL.includes("ip-api")
+      eachInitData.request.responseURL.includes("ipapi")
       );
       setActiveTimeLocalData(data);
     }
