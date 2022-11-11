@@ -4,6 +4,6 @@ to = "http://worldtimeapi.org/:splat"
 status = 200
 force = true
 from "apiip"
-to = "http://ip-api.com/json/:splat"
+to = "http://ip-api.com/:splat"
 status = 200
 force = true
