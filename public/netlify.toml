@@ -3,7 +3,7 @@ from = "/world/*"
 to = "http://worldtimeapi.org/:splat"
 status = 200
 force = true
-from "apiip"
+from "/apiip/*"
 to = "http://ip-api.com/:splat"
 status = 200
 force = true
