@@ -5,7 +5,7 @@ export const fetchAllData = async () => {
     const calls = [
       "/api/json/",
       "https://programming-quotes-api.herokuapp.com/Quotes/random",
-      "/apiworld/ip",
+      "/apiworld/ip/",
     ];
     const promises = []
     //
