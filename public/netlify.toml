@@ -7,3 +7,4 @@ from "apiip"
 to = "http://ip-api.com/:splat"
 status = 200
 force = true
+

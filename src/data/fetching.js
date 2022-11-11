@@ -3,9 +3,9 @@ import axios from "axios";
 export const fetchAllData = async () => {
   try {
     const calls = [
-      "/apiip/json/",
+      "http://ip-api.com/json",
       "https://programming-quotes-api.herokuapp.com/Quotes/random",
-      "/world/api/ip",
+      "http://worldtimeapi.org/api/ip",
     ];
     const promises = []
     //
