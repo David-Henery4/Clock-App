@@ -3,6 +3,8 @@ from = "/world/*"
 to = "http://worldtimeapi.org/api/ip/:splat"
 status = 200
 force = true
+
+[[redirects]]
 from "/apiip/*"
 to = "http://ip-api.com/json/:splat"
 status = 200
