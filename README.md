@@ -35,8 +35,8 @@ Users can:
 ### Links
 
 <!-- Links to be added -->
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/clockapp-responsive-cssgrid-flexbox-react-reactquery-axios-rk8UFiLcgK)
+- Live Site URL: [Clock-on-time](https://clock-on-time.netlify.app)
 
 ## My process
 

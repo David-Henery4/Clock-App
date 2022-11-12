@@ -48,12 +48,12 @@ const HomeContent = ({ slideState, activeTimeLocalData, isNight }) => {
             <Sun className="time-location-msg__icon" />
           )}
 
-          <h4 className="h4-header-style time-location-msg__greeting">
+          <h3 className="h4-header-style time-location-msg__greeting">
             {setGreeting()}
             <span className="time-location-msg__greeting--extra">
               , IT’S CURRENTLY
             </span>
-          </h4>
+          </h3>
         </div>
         <div className="time-location-timezone">
           <h1 className="h1-header-style time-location-timezone__time">
@@ -68,9 +68,9 @@ const HomeContent = ({ slideState, activeTimeLocalData, isNight }) => {
               .slice(4)}
           </p>
         </div>
-        <h3 className="h3-header-style time-location__location">
+        <h2 className="h3-header-style time-location__location">
           in {activeTimeLocalData?.city}, {activeTimeLocalData?.country}
-        </h3>
+        </h2>
       </div>
       <button
         className="btn-basic btn-text time-location__btn"
