@@ -1,18 +1,16 @@
 import React from "react";
-import {
-  Moon,
-  ArrowDown,
-  Sun,
-} from "../assets/desktop";
+import { useState } from "react";
+import { useEffect } from "react";
+import { Moon, ArrowDown, Sun } from "../assets/desktop";
 
-const HomeContent = ({
-  slideState,
-  activeTimeLocalData,
-  activeSlideInData,
-  currentTime,
-  isNight,
-}) => {
+const HomeContent = ({ slideState, activeTimeLocalData, isNight }) => {
   const { isSlideInActive, setIsSlideInActive } = slideState;
+  const [currentTime, setCurrentTime] = useState(
+    `${new Date().getHours().toString().padStart(2, "0")}:${new Date()
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}`
+  );
   //
   const setGreeting = () => {
     const hour = new Date().getHours();
@@ -26,8 +24,19 @@ const HomeContent = ({
       return "Good Evening";
     }
   };
-  console.log(activeSlideInData)
-  console.log(activeTimeLocalData)
+  //
+  const getTime = () => {
+    const hours = new Date().getHours().toString().padStart(2, "0");
+    const mins = new Date().getMinutes().toString().padStart(2, "0");
+    const time = `${hours}:${mins}`;
+    setCurrentTime(time);
+  };
+  //
+  useEffect(() => {
+    setInterval(() => {
+      getTime();
+    }, 1000);
+  }, []);
   //
   return (
     <div className="home">
@@ -51,11 +60,16 @@ const HomeContent = ({
             {currentTime}
           </h1>
           <p className="timezone-text time-location-timezone__zone">
-            {activeSlideInData?.abbreviation}
+            {new Date()
+              .toLocaleDateString("en", {
+                day: "2-digit",
+                timeZoneName: "short",
+              })
+              .slice(4)}
           </p>
         </div>
         <h3 className="h3-header-style time-location__location">
-          in {activeTimeLocalData?.city}, {activeTimeLocalData?.region_code}
+          in {activeTimeLocalData?.city}, {activeTimeLocalData?.country}
         </h3>
       </div>
       <button

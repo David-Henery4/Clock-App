@@ -1,5 +1,0 @@
-[[redirects]]
-from = "/time/*"
-to = "http://worldtimeapi.org/api/:splat"
-status = 200
-force = true

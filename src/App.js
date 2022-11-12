@@ -7,9 +7,7 @@ import { fetchAllData } from "./data/fetching";
 function App() {
   const [isSlideInActive, setIsSlideInActive] = useState(false);
   const [activeQuoteData, setActiveQuoteData] = useState({});
-  const [activeSlideInData, setActiveSlideInData] = useState({});
   const [activeTimeLocalData, setActiveTimeLocalData] = useState({});
-  const [currentTime, setCurrentTime] = useState(0);
   const [isNight, setIsNight] = useState(false);
   //
   const {
@@ -25,37 +23,21 @@ function App() {
   });
   //
   const findQuoteData = (fullData) => {
-    if (fullData){
+    if (fullData) {
       const { data } = fullData?.find((eachInitData) =>
-      eachInitData.request.responseURL.includes("quotes")
+        eachInitData.request.responseURL.includes("quotes")
       );
       setActiveQuoteData(data);
     }
   };
   //
-  const findSlideInData = (fullData) => {
-    if (fullData){
-      const { data } = fullData?.find((eachInitData) =>
-      eachInitData.request.responseURL.includes("time")
-      );
-      setActiveSlideInData(data);
-    }
-  };
-  //
   const findHomeContentData = (fullData) => {
-    if (fullData){
+    if (fullData) {
       const { data } = fullData?.find((eachInitData) =>
-      eachInitData.request.responseURL.includes("ipapi")
+        eachInitData.request.responseURL.includes("ipapi")
       );
       setActiveTimeLocalData(data);
     }
-  };
-  //
-  const getTime = () => {
-    const hours = new Date().getHours().toString().padStart(2, "0");
-    const mins = new Date().getMinutes().toString().padStart(2, "0");
-    const time = `${hours}:${mins}`;
-    setCurrentTime(time);
   };
   //
   const dayOrNight = () => {
@@ -71,10 +53,9 @@ function App() {
   };
   //
   useEffect(() => {
-    dayOrNight()
+    dayOrNight();
     setInterval(() => {
       dayOrNight();
-      getTime();
     }, 1000);
   }, []);
   //
@@ -82,19 +63,18 @@ function App() {
     if (isSuccess) {
       findHomeContentData(initialData);
       findQuoteData(initialData);
-      findSlideInData(initialData);
     }
   }, [initialData]);
   //
   return (
     <div className={isNight ? "App overall bg-night" : "App overall bg-day"}>
       <main className={isSlideInActive ? "main main-slide-active" : "main"}>
-        {isError && 
-        <>
-        <ErrorModal refetch={refetch}/>
-        <Overlay isError={isError}/>
-        </>
-        }
+        {isError && (
+          <>
+            <ErrorModal refetch={refetch} />
+            <Overlay isError={isError} />
+          </>
+        )}
         {isLoading ? (
           <>
             <div className="lds-dual-ring-main"></div>
@@ -104,14 +84,11 @@ function App() {
           <>
             <Quote
               isSlideInActive={isSlideInActive}
-              initialData={initialData}
               activeQuoteData={activeQuoteData}
             />
             <HomeContent
               slideState={{ isSlideInActive, setIsSlideInActive }}
               activeTimeLocalData={activeTimeLocalData}
-              activeSlideInData={activeSlideInData}
-              currentTime={currentTime}
               isNight={isNight}
             />
           </>
@@ -119,7 +96,6 @@ function App() {
       </main>
       <SlideIn
         isSlideInActive={isSlideInActive}
-        activeSlideInData={activeSlideInData}
         activeTimeLocalData={activeTimeLocalData}
       />
     </div>
