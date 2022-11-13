@@ -1,23 +1,9 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import getDayAndWeekNumbers from "../data/getDayWeekNum";
 
 const SlideIn = ({ isSlideInActive, activeTimeLocalData }) => {
   //
-  const [dayNumber, setDayNumber] = useState(0);
-  const [weekNumber, setWeekNumber] = useState(0);
-  //
-  const getDayAndWeekNumbers = () => {
-    const currDate = new Date();
-    const startDate = new Date(currDate.getFullYear(), 0, 1);
-    const days = Math.floor((currDate - startDate) / (24 * 60 * 60 * 1000));
-    const weekNum = Math.ceil(days / 7);
-    setDayNumber(days + 1);
-    setWeekNumber(weekNum);
-  };
-  //
-  useEffect(() => {
-    getDayAndWeekNumbers();
-  }, []);
+  const {weekNumber, dayNumber} = getDayAndWeekNumbers()
   //
   return (
     <aside
@@ -38,7 +24,9 @@ const SlideIn = ({ isSlideInActive, activeTimeLocalData }) => {
       <div className="slide-in-col slide-in-col-2">
         <div className="info-style day-week-info">
           <h3 className="slide-header-style">Day of the week</h3>
-          <h2 className="h2-header-style">{new Date().getDay()}</h2>
+          <h2 className="h2-header-style">
+            {new Date().getDay() === 0 ? 7 : new Date().getDay()}
+          </h2>
         </div>
         <div className="info-style week-num-info">
           <h3 className="slide-header-style">Week number</h3>
